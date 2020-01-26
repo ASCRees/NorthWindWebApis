@@ -81,3 +81,4 @@ C:\Projects\NorthWindWebApis\NorthWindWebApis\bin\Microsoft.CodeDom.Providers.Do
 C:\Projects\NorthWindWebApis\NorthWindWebApis\obj\Debug\NorthWindWebApis.csproj.CopyComplete
 C:\Projects\NorthWindWebApis\NorthWindWebApis\obj\Debug\NorthWindWebApis.dll
 C:\Projects\NorthWindWebApis\NorthWindWebApis\obj\Debug\NorthWindWebApis.pdb
+C:\Projects\NorthWindWebApis\NorthWindWebApis\obj\Debug\NorthWindWebApis.csprojAssemblyReference.cache

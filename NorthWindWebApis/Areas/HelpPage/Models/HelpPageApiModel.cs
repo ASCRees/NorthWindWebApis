@@ -1,8 +1,8 @@
+using NorthWindWebApis.Areas.HelpPage.ModelDescriptions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using NorthWindWebApis.Areas.HelpPage.ModelDescriptions;
 
 namespace NorthWindWebApis.Areas.HelpPage.Models
 {

@@ -1,14 +1,14 @@
 ﻿namespace NorthWindWebApis.Service
 {
+    using NorthWindWebApis.DataLayer;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
-    using System.Collections.Generic;
-    using NorthWindWebApis.DataLayer;
 
-
-    public class BuildModels : DbContext,IBuildModels
+    public class BuildModels : DbContext, IBuildModels
     {
-        DbContext _context;
+        private DbContext _context;
+
         public BuildModels()
         { }
 
@@ -25,19 +25,16 @@
                                    .Where(s => s.ProductName.StartsWith(productSearch))
                                    .ToList();
             }
-
         }
 
         public Product GetProduct(int Id)
         {
-
             using (var _context = new NORTHWNDEntities())
             {
                 return _context.Products
                                    .Where(s => s.ProductID == Id)
                                    .FirstOrDefault<Product>();
             }
-
         }
     }
 }

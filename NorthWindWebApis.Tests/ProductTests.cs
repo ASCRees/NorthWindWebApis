@@ -1,14 +1,13 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
 using NorthWindWebApis.Service;
-using FluentAssertions;
+using NUnit.Framework;
 
 namespace NorthWindWebApis.Tests.ServiceLayer
 {
-
     [TestFixture]
     public class ProductTests
     {
-        IBuildModels buildModels;
+        private IBuildModels buildModels;
 
         [SetUp]
         public void Setup()
@@ -27,7 +26,6 @@ namespace NorthWindWebApis.Tests.ServiceLayer
 
             //Assert
             product.ProductID.Should().Be(id);
-
         }
     }
 }
