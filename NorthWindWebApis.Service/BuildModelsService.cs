@@ -7,7 +7,19 @@
 
     public class BuildModelsService : DbContext, IBuildModelsService
     {
-        private DbContext _context;
+        NORTHWNDEntities _context;
+
+        public NORTHWNDEntities Context
+        { 
+            get {
+                    if (_context == null)
+                    {
+                        _context = new NORTHWNDEntities();
+                    }
+                    return _context;
+                }  
+        }
+
 
         //public BuildModelsService()
         //{ }
@@ -19,22 +31,21 @@
 
         public List<Product> GetListOfProducts(string productSearch)
         {
-            using (var _context = new NORTHWNDEntities())
-            {
-                return _context.Products
+            return Context.Products
                                    .Where(s => s.ProductName.StartsWith(productSearch))
                                    .ToList();
-            }
         }
 
         public Product GetProduct(int Id)
         {
-            using (var _context = new NORTHWNDEntities())
-            {
-                return _context.Products
+                return Context.Products
                                    .Where(s => s.ProductID == Id)
                                    .FirstOrDefault<Product>();
-            }
+        }
+
+        public int UpdateProduct()
+        {
+            return Context.SaveChanges();
         }
     }
 }

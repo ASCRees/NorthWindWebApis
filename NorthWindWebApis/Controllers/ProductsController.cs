@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using AutoMapper;
 using NorthWindWebApis.Models;
@@ -20,14 +21,35 @@ namespace NorthWindWebApis.Controllers
 
         // GET /api/<controller>/5
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
-        public ProductViewModel Get(Int32 Id)
+        [Route("GetSingleProduct/{id}")]
+        public ProductViewModel GetSingleProduct(Int32 Id)
         {
             var productServiceModel = _buildModelsService.GetProduct(Id);
             ProductViewModel productViewModel = Mapper.Map<ProductViewModel>(productServiceModel);
 
             return productViewModel;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stringValue"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetMultipleProducts/{stringValue}")]
+        public ProductsViewModel GetMultipleProducts(string stringValue)
+        {
+            var productsServiceModel = _buildModelsService.GetListOfProducts(stringValue);
+            var products = Mapper.Map<List<ProductViewModel>>(productsServiceModel);
+            ProductsViewModel productsViewModel = new ProductsViewModel();
+            productsViewModel.Products = products;
+            return productsViewModel;
         }
 
         //// GET api/<controller>/5
