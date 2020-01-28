@@ -40,5 +40,18 @@ namespace NorthWindWebApis.Tests.ServiceLayer
             //Assert
             product.Count.Should().Be(5);
         }
+
+        [Test]
+        public void Update_Product_Name()
+        {
+            //Arrange
+            var product = buildModels.GetProduct(1);
+
+            //Act
+            product.ProductName = product.ProductName + "...";
+
+            //Assert
+            buildModels.Context.SaveChanges().Should().Be(1);
+        }
     }
 }
