@@ -31,24 +31,21 @@
 
         public List<Product> GetListOfProducts(string productSearch)
         {
-            //_context = new NORTHWNDEntities();
-            //using (var _context = new NORTHWNDEntities())
-            //{
-            //    _context = new NORTHWNDEntities();
             return Context.Products
                                    .Where(s => s.ProductName.StartsWith(productSearch))
                                    .ToList();
-            //}
         }
 
         public Product GetProduct(int Id)
         {
-            //using (_context = new NORTHWNDEntities())
-            //{
                 return Context.Products
                                    .Where(s => s.ProductID == Id)
                                    .FirstOrDefault<Product>();
-            //}
+        }
+
+        public int UpdateProduct()
+        {
+            return Context.SaveChanges();
         }
     }
 }

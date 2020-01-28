@@ -10,5 +10,6 @@ namespace NorthWindWebApis.Services
         List<Product> GetListOfProducts(string productSearch);
 
         Product GetProduct(Int32 Id);
+        int UpdateProduct();
     }
 }
