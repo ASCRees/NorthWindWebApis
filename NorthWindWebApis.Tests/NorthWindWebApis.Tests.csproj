@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -107,10 +110,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ProductsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
-    <Compile Include="ProductTests.cs" />
+    <Compile Include="ServiceLayer\ProductTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -123,18 +127,16 @@
       <Project>{2da65ddf-91b9-41a1-9fcf-785309c3dc08}</Project>
       <Name>NorthWindWebApis.DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NorthWindWebApis.Service\NorthWindWebApis.Service.csproj">
+    <ProjectReference Include="..\NorthWindWebApis.Service\NorthWindWebApis.Services.csproj">
       <Project>{8cfe670c-6003-4d95-9707-93045caf7dce}</Project>
-      <Name>NorthWindWebApis.Service</Name>
+      <Name>NorthWindWebApis.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\NorthWindWebApis\NorthWindWebApis.csproj">
       <Project>{0A8AC06D-9615-4B87-8736-4069D36D574C}</Project>
       <Name>NorthWindWebApis</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ServiceLayer\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

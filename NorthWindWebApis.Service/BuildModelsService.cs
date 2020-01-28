@@ -1,21 +1,21 @@
-﻿namespace NorthWindWebApis.Service
+﻿namespace NorthWindWebApis.Services
 {
     using NorthWindWebApis.DataLayer;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
 
-    public class BuildModels : DbContext, IBuildModels
+    public class BuildModelsService : DbContext, IBuildModelsService
     {
         private DbContext _context;
 
-        public BuildModels()
-        { }
+        //public BuildModelsService()
+        //{ }
 
-        public BuildModels(DbContext context)
-        {
-            _context = context;
-        }
+        //public BuildModelsService(DbContext context)
+        //{
+        //    _context = context;
+        //}
 
         public List<Product> GetListOfProducts(string productSearch)
         {

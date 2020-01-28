@@ -8,4 +8,3 @@ C:\Projects\NorthWindWebApis\NorthWindWebApis.DataLayer\bin\Debug\EntityFramewor
 C:\Projects\NorthWindWebApis\NorthWindWebApis.DataLayer\obj\Debug\NorthWindWebApis.DataLayer.csproj.CopyComplete
 C:\Projects\NorthWindWebApis\NorthWindWebApis.DataLayer\obj\Debug\NorthWindWebApis.DataLayer.dll
 C:\Projects\NorthWindWebApis\NorthWindWebApis.DataLayer\obj\Debug\NorthWindWebApis.DataLayer.pdb
-C:\Projects\NorthWindWebApis\NorthWindWebApis.DataLayer\obj\Debug\NorthWindWebApis.DataLayer.csprojAssemblyReference.cache

@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using NorthWindWebApis.Service;
+using NorthWindWebApis.Services;
 using NUnit.Framework;
 
 namespace NorthWindWebApis.Tests.ServiceLayer
@@ -7,12 +7,12 @@ namespace NorthWindWebApis.Tests.ServiceLayer
     [TestFixture]
     public class ProductTests
     {
-        private IBuildModels buildModels;
+        private IBuildModelsService buildModels;
 
         [SetUp]
         public void Setup()
         {
-            buildModels = new BuildModels();
+            buildModels = new BuildModelsService();
         }
 
         [Test]
@@ -26,6 +26,19 @@ namespace NorthWindWebApis.Tests.ServiceLayer
 
             //Assert
             product.ProductID.Should().Be(id);
+        }
+
+        [Test]
+        public void Select_Multiple_Products()
+        {
+            //Arrange
+            var startsWith = "M";
+
+            //Act
+            var product = buildModels.GetListOfProducts(startsWith);
+
+            //Assert
+            product.Count.Should().Be(5);
         }
     }
 }

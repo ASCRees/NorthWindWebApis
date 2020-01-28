@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace NorthWindWebApis.Service
+namespace NorthWindWebApis.Services
 {
-    public interface IBuildModels
+    public interface IBuildModelsService
     {
         List<Product> GetListOfProducts(string productSearch);
 

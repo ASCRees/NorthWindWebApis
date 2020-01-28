@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using NorthWindWebApis.App_Start;
+using System.Web.Http;
 
 namespace NorthWindWebApis
 {
@@ -16,6 +17,8 @@ namespace NorthWindWebApis
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            StructuremapWebApi.Start();
         }
     }
 }

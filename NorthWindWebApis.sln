@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWindWebApis.Tests", "N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWindWebApis.DataLayer", "NorthWindWebApis.DataLayer\NorthWindWebApis.DataLayer.csproj", "{2DA65DDF-91B9-41A1-9FCF-785309C3DC08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWindWebApis.Service", "NorthWindWebApis.Service\NorthWindWebApis.Service.csproj", "{8CFE670C-6003-4D95-9707-93045CAF7DCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWindWebApis.Services", "NorthWindWebApis.Service\NorthWindWebApis.Services.csproj", "{8CFE670C-6003-4D95-9707-93045CAF7DCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
