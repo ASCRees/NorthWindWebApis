@@ -1,13 +1,10 @@
 ﻿using NorthWindWebApis.DataLayer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NorthWindWebApis.Service
+namespace NorthWindWebApis.Services
 {
-    public interface IBuildModels
+    public interface IBuildModelsService
     {
         List<Product> GetListOfProducts(string productSearch);
 

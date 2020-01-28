@@ -106,3 +106,9 @@ NorthWindWebApis/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 NorthWindWebApis/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 NorthWindWebApis/bin/
 packages/
+NorthWindWebApis.Service/bin/
+NorthWindWebApis.Service/obj/Debug/NorthWindWebApis.Services.csproj.CopyComplete
+NorthWindWebApis.Tests/bin/Debug/AutoMapper.dll
+NorthWindWebApis.Tests/bin/
+NorthWindWebApis/obj/
+NorthWindWebApis.Service/obj/Debug/NorthWindWebApis.Services.csproj.FileListAbsolute.txt
