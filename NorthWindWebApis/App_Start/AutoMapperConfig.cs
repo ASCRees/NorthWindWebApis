@@ -18,6 +18,7 @@ namespace NorthWindWebApis.App_Start
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Product, ProductViewModel>();
+                cfg.CreateMap<ProductViewModel,Product>();
             });
         }
     }

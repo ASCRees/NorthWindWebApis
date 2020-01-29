@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NorthWindWebApis.Services;
 using NUnit.Framework;
+using NorthWindWebApis.DataLayer;
 
 namespace NorthWindWebApis.Tests.ServiceLayer
 {
@@ -63,6 +64,25 @@ namespace NorthWindWebApis.Tests.ServiceLayer
             product.ProductName= product.ProductName + "...";
             //Assert
             buildModels.UpdateProduct().Should().Be(1);
+        }
+
+        [Test]
+        public void Create_Product()
+        {
+            //Arrange
+            var product = new Product
+            {
+                ProductName = "Brown Sauce",
+                UnitPrice = 1,
+                SupplierID = 1,
+                CategoryID = 1,
+                UnitsInStock = 100
+            };
+
+            //Act
+            var productCreated = buildModels.CreateNewProduct(product);
+            //Assert
+            productCreated.ProductID.Should().BeGreaterThan(0);
         }
     }
 }

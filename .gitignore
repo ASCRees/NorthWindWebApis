@@ -113,3 +113,6 @@ NorthWindWebApis.Tests/bin/
 NorthWindWebApis/obj/
 NorthWindWebApis.Service/obj/Debug/NorthWindWebApis.Services.csproj.FileListAbsolute.txt
 NorthWindWebApis.Service/obj/Debug/
+.vs/NorthWindWebApis/v16/TestStore/1/000-0000.testlog
+.vs/NorthWindWebApis/v16/TestStore/1/testlog.manifest
+NorthWindWebApis.DataLayer/obj/Debug/NorthWindWebApis.DataLayer.csprojAssemblyReference.cache

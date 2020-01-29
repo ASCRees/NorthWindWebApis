@@ -11,5 +11,6 @@ namespace NorthWindWebApis.Services
 
         Product GetProduct(Int32 Id);
         int UpdateProduct();
+        Product CreateNewProduct(Product prodContext);
     }
 }
