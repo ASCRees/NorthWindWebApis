@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,8 @@ namespace NorthWindWebApis.Models
     public class ProductViewModel
     {
         public int ProductID { get; set; }
+
+        [Required(ErrorMessage = "Please add a product name.")]
         public string ProductName { get; set; }
         public Nullable<int> SupplierID { get; set; }
         public Nullable<int> CategoryID { get; set; }

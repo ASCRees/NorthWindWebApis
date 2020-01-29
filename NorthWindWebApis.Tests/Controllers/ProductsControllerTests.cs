@@ -10,6 +10,7 @@ using NorthWindWebApis.Controllers;
 using NorthWindWebApis.Models;
 using AutoMapper;
 using NorthWindWebApis.App_Start;
+using System.Net;
 
 namespace NorthWindWebApis.Tests.Controllers
 {
@@ -75,5 +76,86 @@ namespace NorthWindWebApis.Tests.Controllers
             productViewModel.ProductID.Should().BeGreaterThan(0);
 
         }
+
+        [Test]
+        public void PostProduct_Update_Product()
+        {
+            // Arrange
+            ProductViewModel product = new ProductViewModel
+            {
+                ProductID=84,
+                ProductName = "BBQ Sauce",
+                UnitPrice = 1.39m,
+                UnitsInStock = 90,
+                SupplierID = 1,
+                CategoryID = 1,
+                UnitsOnOrder = 100,
+
+            };
+
+            ProductsController productsController = new ProductsController(new BuildModelsService());
+
+            // Act
+            var productHttpResponse = productsController.PutProduct(product);
+       
+            var productViewModel = (ProductViewModel)((System.Net.Http.ObjectContent)productHttpResponse.Content).Value;
+
+            // Assert
+            productViewModel.UnitsInStock.Should().Be(90);
+
+        }
+
+        [Test]
+        public void PostProduct_Update_Product_NotFound()
+        {
+            // Arrange
+            ProductViewModel product = new ProductViewModel
+            {
+                ProductID = 191919191,
+                ProductName = "BBQ Sauce",
+                UnitPrice = 1.39m,
+                UnitsInStock = 90,
+                SupplierID = 1,
+                CategoryID = 1,
+                UnitsOnOrder = 100,
+
+            };
+
+            ProductsController productsController = new ProductsController(new BuildModelsService());
+
+            // Act
+            var productHttpResponse = productsController.PutProduct(product);
+
+            // Assert
+            productHttpResponse.StatusCode.Should().Be(HttpStatusCode.NotFound);
+
+        }
+
+        [Test]
+        public void PostProduct_Update_Product_Model_Not_Valid()
+        {
+            // Arrange
+            ProductViewModel product = new ProductViewModel
+            {
+                ProductID = 191919191,
+                ProductName = string.Empty,
+                UnitPrice = 1.39m,
+                UnitsInStock = 90,
+                SupplierID = 1,
+                CategoryID = 1,
+                UnitsOnOrder = 100,
+
+            };
+
+            ProductsController productsController = new ProductsController(new BuildModelsService());
+            productsController.ModelState.AddModelError("ProductName", "Is required");
+            // Act
+            var productHttpResponse = productsController.PutProduct(product);
+
+            // Assert
+            productHttpResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+        }
+
     }
 }
