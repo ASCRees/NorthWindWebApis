@@ -74,23 +74,9 @@ namespace NorthWindWebApis.Controllers
             return ReturnResponse(returnProduct, new JsonMediaTypeFormatter(), "application/json", HttpStatusCode.Created, string.Empty);
         }
 
-        private HttpResponseMessage ReturnResponse<T>(T returnObject, MediaTypeFormatter formatter, string formatString, HttpStatusCode statusCode, string returnPhrase)
-        {
-            //var content = 
-
-            var response = new HttpResponseMessage(statusCode)
-            {
-                
-                Content = returnObject.GetType()==new Object().GetType()?null: new ObjectContent<T>(returnObject, formatter, formatString),
-                ReasonPhrase= returnPhrase
-            };
-
-            return response;
-        }
-
 
         // PUT api/<controller>/5
-        [HttpPost]
+        [HttpPut]
         [Route("PutProduct")]
         public HttpResponseMessage PutProduct(ProductViewModel productModel)
         {
@@ -130,13 +116,54 @@ namespace NorthWindWebApis.Controllers
 
         }
 
-        public void Put(int id, [FromBody]string value)
+        [HttpPatch]
+        [Route("PatchProduct")]
+        public HttpResponseMessage PatchProduct(ProductPatchViewModel productModel)
         {
-        }
+            if (!ModelState.IsValid)
+                return ReturnResponse(new Object(), null, string.Empty, HttpStatusCode.BadRequest, "Not a valid model");
 
+            var prodContext = new DataLayer.Product();
+
+            if (productModel.ProductID > 0)
+            {
+                prodContext = _buildModelsService.GetProduct(productModel.ProductID);
+
+                if (prodContext != null)
+                {
+
+                    prodContext.ProductName = productModel.ProductName;
+                    prodContext.ReorderLevel = productModel.ReorderLevel;
+                    prodContext.UnitPrice = productModel.UnitPrice;
+                    prodContext.UnitsInStock = productModel.UnitsInStock;
+                    prodContext.UnitsOnOrder = productModel.UnitsOnOrder;
+
+                    _buildModelsService.UpdateProduct();
+                    productModel = Mapper.Map<ProductPatchViewModel>(prodContext);
+                    return ReturnResponse(productModel, new JsonMediaTypeFormatter(), "application/json", HttpStatusCode.OK, string.Empty);
+                }
+            }
+            return ReturnResponse(productModel, new JsonMediaTypeFormatter(), "application/json", HttpStatusCode.NotFound, "Unable to find the product");
+        }
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
         }
+
+        private HttpResponseMessage ReturnResponse<T>(T returnObject, MediaTypeFormatter formatter, string formatString, HttpStatusCode statusCode, string returnPhrase)
+        {
+            //var content = 
+
+            var response = new HttpResponseMessage(statusCode)
+            {
+
+                Content = returnObject.GetType() == new Object().GetType() ? null : new ObjectContent<T>(returnObject, formatter, formatString),
+                ReasonPhrase = returnPhrase
+            };
+
+            return response;
+        }
+
+
     }
 }

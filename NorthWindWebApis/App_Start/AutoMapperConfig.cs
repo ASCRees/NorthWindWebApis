@@ -19,7 +19,11 @@ namespace NorthWindWebApis.App_Start
             {
                 cfg.CreateMap<Product, ProductViewModel>();
                 cfg.CreateMap<ProductViewModel,Product>();
+
+                cfg.CreateMap <Product, ProductPatchViewModel>();
+                cfg.CreateMap<ProductPatchViewModel,Product>();
             });
         }
+
     }
 }
