@@ -25,7 +25,7 @@ namespace NorthWindWebApis.Controllers
         // GET /api/<controller>/5
 
         /// <summary>
-        /// 
+        /// Returns a Single product
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
@@ -40,7 +40,7 @@ namespace NorthWindWebApis.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Returns multiple products 
         /// </summary>
         /// <param name="stringValue"></param>
         /// <returns></returns>
