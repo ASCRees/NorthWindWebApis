@@ -20,6 +20,13 @@
                 }  
         }
 
+        public Product CreateNewProduct(Product prodContext)
+        {
+            Context.Products.Add(prodContext);
+            Context.SaveChanges();
+            return prodContext;
+        }
+
 
         //public BuildModelsService()
         //{ }
@@ -47,5 +54,7 @@
         {
             return Context.SaveChanges();
         }
+
+       
     }
 }
