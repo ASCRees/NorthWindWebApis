@@ -123,11 +123,10 @@ namespace NorthWindWebApis.Controllers
             if (!ModelState.IsValid)
                 return ReturnResponse(new Object(), null, string.Empty, HttpStatusCode.BadRequest, "Not a valid model");
 
-            var prodContext = new DataLayer.Product();
 
             if (productModel.ProductID > 0)
             {
-                prodContext = _buildModelsService.GetProduct(productModel.ProductID);
+                var prodContext = _buildModelsService.GetProduct(productModel.ProductID);
 
                 if (prodContext != null)
                 {
@@ -146,8 +145,18 @@ namespace NorthWindWebApis.Controllers
             return ReturnResponse(productModel, new JsonMediaTypeFormatter(), "application/json", HttpStatusCode.NotFound, "Unable to find the product");
         }
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public HttpResponseMessage DeleteProduct(int Id)
         {
+            var productServiceModel = _buildModelsService.GetProduct(Id);
+
+            if (productServiceModel!=null)
+            {
+                _buildModelsService.DeleteProduct(Id);
+                return ReturnResponse(productServiceModel, new JsonMediaTypeFormatter(), "application/json", HttpStatusCode.NoContent, string.Empty);
+            }
+            return ReturnResponse(productServiceModel, new JsonMediaTypeFormatter(), "application/json", HttpStatusCode.NotFound, "Unable to find the product");
+
+
         }
 
         private HttpResponseMessage ReturnResponse<T>(T returnObject, MediaTypeFormatter formatter, string formatString, HttpStatusCode statusCode, string returnPhrase)
