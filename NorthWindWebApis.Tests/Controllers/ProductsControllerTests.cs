@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 using FluentAssertions;
 using NorthWindWebApis.Services;
 using NUnit.Framework;
 using NorthWindWebApis.Controllers;
 using NorthWindWebApis.Models;
-using AutoMapper;
 using NorthWindWebApis.App_Start;
-using System.Net;
+using NorthWindWebApis.Tests.Base;
 
 namespace NorthWindWebApis.Tests.Controllers
 {
-    public class ProductsControllerTests
+    public class ProductsControllerTests:BaseTests
     {
         [SetUp]
-        public void Setup()
+        public override void Setup()
         {
             AutoMapperConfig.CreateMappings();
+            base.Setup();
         }
 
         [Test]
@@ -259,6 +255,35 @@ namespace NorthWindWebApis.Tests.Controllers
             // Assert
             productHttpResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
+        }
+
+        [Test]
+        public void Delete_Newly_Created_Product()
+        {
+            //Arrange
+            var productName = "Deleted Sause";
+            var productID = 0;
+            // We will create the product first then check its there then delete it.
+            var product = new ProductViewModel
+            {
+                ProductName = productName,
+                UnitPrice = 2,
+                SupplierID = 1,
+                CategoryID = 1,
+                UnitsInStock = 100
+            };
+
+            ProductsController productsController = new ProductsController(new BuildModelsService());
+            var productHttpResponse = productsController.PutProduct(product);
+            var productViewModel = (ProductViewModel)((System.Net.Http.ObjectContent)productHttpResponse.Content).Value;
+
+            productID = productViewModel.ProductID;
+
+            // Act
+            var productDeleteHttpResponse = productsController.DeleteProduct(productID);
+
+            //Assert
+            productDeleteHttpResponse.StatusCode.Should().Be(HttpStatusCode.NoContent);
         }
     }
 }

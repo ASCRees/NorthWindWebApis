@@ -116,3 +116,5 @@ NorthWindWebApis.Service/obj/Debug/
 .vs/NorthWindWebApis/v16/TestStore/1/000-0000.testlog
 .vs/NorthWindWebApis/v16/TestStore/1/testlog.manifest
 NorthWindWebApis.DataLayer/obj/Debug/NorthWindWebApis.DataLayer.csprojAssemblyReference.cache
+NorthWindWebApis.DataLayer/bin/Debug/
+NorthWindWebApis.DataLayer/obj/Debug/

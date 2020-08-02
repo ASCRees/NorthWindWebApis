@@ -1,6 +1,7 @@
 ﻿namespace NorthWindWebApis.Services
 {
     using NorthWindWebApis.DataLayer;
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
@@ -55,6 +56,13 @@
             return Context.SaveChanges();
         }
 
+        public int DeleteProduct(Int32 ProductID)
+        {
+            Product prod = GetProduct(ProductID);
+            Context.Products.Attach(prod);
+            Context.Products.Remove(prod);
+            return Context.SaveChanges();
+        }
        
     }
 }

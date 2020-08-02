@@ -1,4 +1,5 @@
 ﻿using NorthWindWebApis.App_Start;
+using System;
 using System.Web.Http;
 
 namespace NorthWindWebApis
@@ -19,6 +20,8 @@ namespace NorthWindWebApis
             );
 
             StructuremapWebApi.Start();
+            AppDomain.CurrentDomain.SetData("DataDirectory", "C:\\Projects\\NorthWindWebApis\\NorthWindWebApis.DataLayer\\App_Data\\");
+            
         }
     }
 }
